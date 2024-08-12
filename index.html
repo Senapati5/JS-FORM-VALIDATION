@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>SignUp Page</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+           
+        }
+
+        .form-container {
+            border: 2px solid red;
+            padding: 20px;
+            background-color: #f5f5f5;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+
+        h1, td, input[type="text"], input[type="password"], input[type="submit"] {
+            font-family:Times new roman , sans-serif;
+        }
+	input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 7px 20px;
+            border: none;
+            border-radius: 5px;
+            
+        }
+
+        input[type="submit"]:hover {
+            background-color: blue;
+        }
+ 	table {
+            margin: 0 auto; 
+        }
+    </style>
+</head>
+
+<body>
+    <div class="form-container">
+        <h1>CREATE YOUR ACCOUNT</h1>
+        <table cellspacing="2" cellpadding="8">
+            <tr>
+                <td>Name</td>
+                <td><input type="text" placeholder="Enter your name" id="n1"></td>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td><input type="text" placeholder="Enter your email id" id="e1"></td>
+            </tr>
+            <tr>
+                <td>Mobile Number</td>
+                <td><input type="text" placeholder="Enter your mobile number" id="m1"></td>
+            </tr>
+            <tr>
+                <td>Set Password</td>
+                <td><input type="password" placeholder="Set a password" id="p1"></td>
+            </tr>
+            <tr>
+                <td>Confirm Password</td>
+                <td><input type="password" placeholder="Confirm your password" id="p2"></td>
+            </tr>
+            <tr>
+                <td colspan="2"><center>
+                    <input type="submit" value="Create" onClick="create_account()"></center>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <script type="text/javascript">  
+        function create_account(){  
+            var n = document.getElementById("n1").value;  
+            var e = document.getElementById("e1").value;
+            var m = document.getElementById("m1").value;
+            var p = document.getElementById("p1").value;  
+            var cp = document.getElementById("p2").value;  
+            // Code for validation  
+            var letters = /^[A-Za-z]+$/;  
+            var email_val = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+            var number = /^[0-9]+$/;   
+            
+            if (n == '' || e == '' || m == '' || p == '' || cp == '') {  
+                alert("Enter each detail correctly");  
+            }  
+            else if (!letters.test(n)) {  
+                alert('Name is incorrect; it must contain alphabets only');  
+            } 
+            else if (!email_val.test(e)) {  
+                alert('Invalid email format; please enter a valid email id');  
+            }
+            else if (!number.test(m)) {  
+                alert('Invalid mobile number; please enter a valid mobile number');  
+            }   
+            else if (p != cp) {  
+                alert("Passwords do not match");  
+            }  
+	    else if (m.length > 10) {  
+                alert("Invalid mobile number"); 
+	    }
+	    else if (m.length < 10) {  
+                alert("Invalid mobile number");  
+            } 
+             
+            else if (p.length > 12) {  
+                alert("Password maximum length is 12");  
+            }  
+            else if (p.length < 6) {  
+                alert("Password minimum length is 6");  
+            }  
+            else {  
+                alert("Your account has been created successfully... Redirecting to Account page");  
+                window.location = "ASSIGNMENT1.html";  
+            }  
+        }  
+    </script>
+</body>
+</html>
